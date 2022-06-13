@@ -43,7 +43,7 @@ begin
 	process(clk, rst)
 	begin
 		if rst = '1' then
-			currentState <= std_logic_vector(to_unsigned(resetValue, currentState'length+2));
+			currentState <= '0'&std_logic_vector(to_unsigned(resetValue, currentState'length-2))&'0';
 		elsif rising_edge(clk) then
 			currentState <= nextState;
 		end if;
