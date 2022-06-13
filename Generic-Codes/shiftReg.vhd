@@ -29,14 +29,14 @@ begin
 						currentstate when enb = '0' else
 							tempnextstate;
 	toleft: if toleft and not toright generate
-		tempnextstate <= currentState(n downto 2) & inputFromRight & currentState(0);
+		tempnextstate <= currentState(n downto 1) & inputFromRight & currentState(0);
 	end generate;
 	toright: if not toleft and toright generate
-		tempnextstate <= currentState(n+1) & inputFromLeft & currentState(n-1 downto 0);
+		tempnextstate <= currentState(n+1) & inputFromLeft & currentState(n-1 downto 1);
 	end generate;
 	both: if toleft and toright generate;
-		tempnextstate <= currentState(n+1) & inputFromLeft & currentState(n-1 downto 0) when op = '1' else
-								currentState(n downto 2) & inputFromRight & currentState(0);
+		tempnextstate <= currentState(n+1) & inputFromLeft & currentState(n-1 downto 1) when op = '1' else
+								currentState(n downto 1) & inputFromRight & currentState(0);
 	end generate;
 	
 	--memory element
