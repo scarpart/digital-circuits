@@ -2,7 +2,7 @@ library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
-entity modulecounterr is
+entity modulecounter is
     generic(n          : positive := 8;
             generateEnb: boolean := true;
             generateInc: boolean := true;
@@ -13,7 +13,7 @@ entity modulecounterr is
             output: out std_logic_vector(n-1 downto 0) );
 end entity;
 
-architecture counting of modulecounterr is
+architecture counting of modulecounter is
     subtype states is unsigned(n-1 downto 0);
     signal currentState, nextState: states;
     
